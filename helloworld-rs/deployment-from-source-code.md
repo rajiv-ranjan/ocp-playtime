@@ -1,4 +1,4 @@
-#Deploying hello world application via s2i
+# Deploying hello world application via s2i
 
 ## Using s2i template available in OpenShift
 Developer is expected to commit code in the SCM like Git. Openshift can pull the source code; use the s2i template to provision all openshift and kubernetes objects.

@@ -40,4 +40,7 @@ We have two choices to create the docker image
 ### Method 1: Image Creation from source 
 ### Method 2: Image creation from binary
 ### Method 3: Image creation from SCM
-  
+
+```sh
+s2i build --pull-policy=never --context-dir=helloworld-rs https://github.com/rajiv-ranjan/ocp-playtime registry.access.redhat.com/jboss-eap-7/eap71-openshift eap-app
+```
