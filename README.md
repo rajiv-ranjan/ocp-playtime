@@ -27,3 +27,19 @@ No Minishift instance exists. New 'cpus' setting will be applied on next 'minish
 - vm-driver                          : xhyve
 ➜  ~
 ```
+
+
+
+### Game 1:
+### Game 2:
+### Game 3:
+### Game 4: Deployment Strategies
+There are three deployment strategies explain and demonstrated. 
+*   Deployment of application via s2i template in OpenShift. Read further [here](https://github.com/rajiv-ranjan/ocp-playtime/blob/master/helloworld-rs/deployment-from-source-code.md "deployment-from-source-code").
+*   Deployment of application from binary (war, jar etc) outside OpenShift. Read further [here](https://github.com/rajiv-ranjan/ocp-playtime/blob/master/helloworld-rs/deployment-from-binary.md "deployment-from-binary").
+*   Deployment of application from docker image created outside OpenShift. Read further [here](https://github.com/rajiv-ranjan/ocp-playtime/blob/master/helloworld-rs/deployment-from-docker-image.md "deployment-from-docker-image").
+
+### Game 5:
+### Game 6:
+### Game 7:
+
