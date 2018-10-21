@@ -28,7 +28,7 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.as.quickstarts.tasksrs.model.Resources;
 import org.jboss.as.quickstarts.tasksrs.model.Task;
 import org.jboss.as.quickstarts.tasksrs.model.TaskDao;
-import org.jboss.as.quickstarts.tasksrs.model.User;
+import org.jboss.as.quickstarts.tasksrs.model.Users;
 import org.jboss.as.quickstarts.tasksrs.model.UserDao;
 import org.jboss.as.quickstarts.tasksrs.model.UserDaoImpl;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
@@ -46,7 +46,7 @@ public class UserDaoIT {
     @Deployment
     public static WebArchive deployment() throws IllegalArgumentException, FileNotFoundException {
         return new DefaultDeployment().withPersistence().withImportedData().getArchive()
-                .addClasses(Resources.class, User.class, UserDao.class, Task.class, TaskDao.class, UserDaoImpl.class);
+                .addClasses(Resources.class, Users.class, UserDao.class, Task.class, TaskDao.class, UserDaoImpl.class);
     }
 
     @Inject
@@ -58,11 +58,11 @@ public class UserDaoIT {
     @Test
     public void userDao_should_create_user_so_it_could_be_retrieved_from_userDao_by_username() {
         // given
-        User created = new User("username1");
+        Users created = new Users("username1");
 
         // when
         userDao.createUser(created);
-        User retrieved = userDao.getForUsername("username1");
+        Users retrieved = userDao.getForUsername("username1");
 
         // then
         assertTrue(em.contains(created));
@@ -76,7 +76,7 @@ public class UserDaoIT {
         String username = "jdoe";
 
         // when
-        User retrieved = userDao.getForUsername(username);
+        Users retrieved = userDao.getForUsername(username);
 
         // then
         Assert.assertEquals(username, retrieved.getUsername());
@@ -88,7 +88,7 @@ public class UserDaoIT {
         String nonExistent = "nonExistent";
 
         // when
-        User retrieved = userDao.getForUsername(nonExistent);
+        Users retrieved = userDao.getForUsername(nonExistent);
 
         // then
         assertNull(retrieved);

@@ -28,6 +28,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.TableGenerator;
 
 /**
  * User entity
@@ -36,7 +38,8 @@ import javax.persistence.OneToMany;
  */
 @SuppressWarnings("serial")
 @Entity
-public class User implements Serializable {
+@Table
+public class Users implements Serializable {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -49,10 +52,10 @@ public class User implements Serializable {
     @Column(updatable = false)
     private List<Task> tasks = new ArrayList<>();
 
-    public User() {
+    public Users() {
     }
 
-    public User(String username) {
+    public Users(String username) {
         this.username = username;
     }
 
@@ -96,7 +99,7 @@ public class User implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        User other = (User) obj;
+        Users other = (Users) obj;
         if (username == null) {
             if (other.username != null)
                 return false;

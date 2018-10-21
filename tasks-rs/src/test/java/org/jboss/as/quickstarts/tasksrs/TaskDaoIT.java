@@ -31,7 +31,7 @@ import org.jboss.as.quickstarts.tasksrs.model.Resources;
 import org.jboss.as.quickstarts.tasksrs.model.Task;
 import org.jboss.as.quickstarts.tasksrs.model.TaskDao;
 import org.jboss.as.quickstarts.tasksrs.model.TaskDaoImpl;
-import org.jboss.as.quickstarts.tasksrs.model.User;
+import org.jboss.as.quickstarts.tasksrs.model.Users;
 import org.jboss.as.quickstarts.tasksrs.model.UserDao;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Before;
@@ -48,7 +48,7 @@ public class TaskDaoIT {
     @Deployment
     public static WebArchive deployment() throws IllegalArgumentException, FileNotFoundException {
         return new DefaultDeployment().withPersistence().withImportedData().getArchive()
-                .addClasses(Resources.class, User.class, UserDao.class, Task.class, TaskDao.class, TaskDaoImpl.class);
+                .addClasses(Resources.class, Users.class, UserDao.class, Task.class, TaskDao.class, TaskDaoImpl.class);
     }
 
     @Inject
@@ -57,11 +57,11 @@ public class TaskDaoIT {
     @Inject
     private TaskDao taskDao;
 
-    private User detachedUser;
+    private Users detachedUser;
 
     @Before
     public void setUp() throws Exception {
-        detachedUser = new User("jdoe");
+        detachedUser = new Users("jdoe");
         detachedUser.setId(1L);
     }
 
@@ -69,7 +69,7 @@ public class TaskDaoIT {
     @InSequence(1)
     public void user_should_be_created_with_one_task_attached() throws Exception {
         // given
-        User user = new User("New user");
+        Users user = new Users("New user");
         Task task = new Task("New task");
 
         // when

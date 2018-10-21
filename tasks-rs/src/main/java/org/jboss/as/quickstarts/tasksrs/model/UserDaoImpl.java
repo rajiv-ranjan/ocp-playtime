@@ -35,8 +35,8 @@ public class UserDaoImpl implements UserDao {
     @Inject
     private EntityManager em;
 
-    public User getForUsername(String username) {
-        List<User> result = em.createQuery("select u from User u where u.username = ?1", User.class).setParameter(1, username)
+    public Users getForUsername(String username) {
+        List<Users> result = em.createQuery("select u from Users u where u.username = ?1", Users.class).setParameter(1, username)
             .getResultList();
 
         if (result.isEmpty()) {
@@ -45,7 +45,7 @@ public class UserDaoImpl implements UserDao {
         return result.get(0);
     }
 
-    public void createUser(User user) {
+    public void createUser(Users user) {
         em.persist(user);
     }
 }

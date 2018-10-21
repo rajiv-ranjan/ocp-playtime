@@ -34,6 +34,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * User's task entity which is marked up with JPA annotations and JAXB for serializing XML
  * (and JSON if required)
@@ -50,7 +52,7 @@ public class Task implements Serializable {
     private Long id;
 
     @ManyToOne
-    private User owner;
+    private Users owner;
 
     private String title;
 
@@ -73,8 +75,8 @@ public class Task implements Serializable {
 
     @XmlTransient
     // JSON: uncomment to include json support (note json is not part of the JAX-RS standard)
-    // @JsonIgnore
-    public User getOwner() {
+    @JsonIgnore
+    public Users getOwner() {
         return owner;
     }
 
@@ -83,7 +85,7 @@ public class Task implements Serializable {
         return owner.getUsername();
     }
 
-    public void setOwner(User owner) {
+    public void setOwner(Users owner) {
         this.owner = owner;
     }
 

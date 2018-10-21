@@ -72,13 +72,13 @@
         </dependency>
 
         <!-- JSON: uncomment to include json support (note json is not part of the JAX-RS standard) -->
-        <!--
+        
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-jackson2-provider</artifactId>
             <scope>provided</scope>
         </dependency>
-        -->
+       
 
         <!-- Import the EJB API, we use provided scope as the API is included in JBoss EAP -->
         <dependency>

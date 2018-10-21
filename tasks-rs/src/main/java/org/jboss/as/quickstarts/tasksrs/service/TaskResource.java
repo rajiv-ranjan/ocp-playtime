@@ -37,7 +37,7 @@ import javax.ws.rs.core.UriInfo;
 
 import org.jboss.as.quickstarts.tasksrs.model.Task;
 import org.jboss.as.quickstarts.tasksrs.model.TaskDao;
-import org.jboss.as.quickstarts.tasksrs.model.User;
+import org.jboss.as.quickstarts.tasksrs.model.Users;
 import org.jboss.as.quickstarts.tasksrs.model.UserDao;
 
 /**
@@ -56,7 +56,7 @@ public class TaskResource {
     public Response createTask(@Context UriInfo info, @Context SecurityContext context,
         @PathParam("title") @DefaultValue("task") String taskTitle) {
 
-        User user = getUser(context);
+        Users user = getUser(context);
         Task task = new Task(taskTitle);
 
         taskDao.createTask(user, task);
@@ -81,10 +81,10 @@ public class TaskResource {
     @GET
     @Path("tasks/id/{id}")
     // JSON: include "application/json" in the @Produces annotation to include json support
-    // @Produces({ "application/xml", "application/json" })
-    @Produces({ "application/xml" })
+    @Produces({ "application/xml", "application/json" })
+    // @Produces({ "application/xml" })
     public Task getTaskById(@Context SecurityContext context, @PathParam("id") Long id) {
-        User user = getUser(context);
+        Users user = getUser(context);
 
         return getTask(user, id);
     }
@@ -92,8 +92,8 @@ public class TaskResource {
     @GET
     @Path("tasks/title/{title}")
     // JSON: include "application/json" in the @Produces annotation to include json support
-    // @Produces({ "application/xml", "application/json" })
-    @Produces({ "application/xml" })
+    @Produces({ "application/xml", "application/json" })
+    // @Produces({ "application/xml" })
     public List<Task> getTasksByTitle(@Context SecurityContext context, @PathParam("title") String title) {
         return getTasks(getUser(context), title);
     }
@@ -101,23 +101,23 @@ public class TaskResource {
     @GET
     @Path("tasks/title")
     // JSON: include "application/json" in the @Produces annotation to include json support
-    // @Produces({ "application/xml", "application/json" })
-    @Produces({ "application/xml" })
+    @Produces({ "application/xml", "application/json" })
+    // @Produces({ "application/xml" })
     public List<Task> getTasks(@Context SecurityContext context) {
         return getTasks(getUser(context));
     }
 
     // Utility Methods
 
-    private List<Task> getTasks(User user, String title) {
+    private List<Task> getTasks(Users user, String title) {
         return taskDao.getForTitle(user, title);
     }
 
-    private List<Task> getTasks(User user) {
+    private List<Task> getTasks(Users user) {
         return taskDao.getAll(user);
     }
 
-    private Task getTask(User user, Long id) {
+    private Task getTask(Users user, Long id) {
         for (Task task : taskDao.getAll(user))
             if (task.getId().equals(id))
                 return task;
@@ -125,7 +125,7 @@ public class TaskResource {
         throw new WebApplicationException(Response.Status.NOT_FOUND);
     }
 
-    private User getUser(SecurityContext context) {
+    private Users getUser(SecurityContext context) {
         Principal principal = null;
 
         if (context != null)
@@ -137,13 +137,13 @@ public class TaskResource {
         return getUser(principal.getName());
     }
 
-    private User getUser(String username) {
+    private Users getUser(String username) {
 
         try {
-            User user = userDao.getForUsername(username);
+            Users user = userDao.getForUsername(username);
 
             if (user == null) {
-                user = new User(username);
+                user = new Users(username);
 
                 userDao.createUser(user);
             }
