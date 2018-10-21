@@ -1,5 +1,4 @@
 
-
 Install s2i by following the steps at https://github.com/openshift/source-to-image. Below is an example. 
 
 ```sh
