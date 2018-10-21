@@ -120,3 +120,6 @@ Server: JBoss-EAP/7
 Pragma: no-cache
 Date: Sun, 21 Oct 2018 13:11:52 GMT
 ```
+
+## Stage 2: Take the application to OpenShift and Postgresql runs from the docker container (outside OCP) 
+
