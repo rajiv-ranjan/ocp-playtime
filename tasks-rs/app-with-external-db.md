@@ -36,6 +36,17 @@ Changed the datasource in the file  **/tasks-rs/src/main/resources/META-INF/pers
 ```xml
 <jta-data-source>${postgresqlDS}</jta-data-source>
 ```
+Make changes to standalone.xml to accept environment variables
+
+```xml
+	<subsystem xmlns="urn:jboss:domain:ee:4.0">
+		------
+		<spec-descriptor-property-replacement>true</spec-descriptor-property-replacement>
+		<jboss-descriptor-property-replacement>true</jboss-descriptor-property-replacement>
+		------
+	</subsystem>
+```
+
 
 Start the EAP standalone passing datasource variable
 
