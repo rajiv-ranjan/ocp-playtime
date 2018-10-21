@@ -38,9 +38,9 @@ oc create -f eap71-basic-s2i.json -n openshift
 If the template already exists in the *openshift* namespace then tag the same to working namespeace
 
 ```sh
-oc tag openshift/jboss-eap71-openshift:1.2 helloword-rs-binary/jboss-eap71-openshift:1.2
-oc tag openshift/jboss-eap71-openshift:1.3 helloword-rs-binary/jboss-eap71-openshift:1.3
-oc tag openshift/jboss-eap71-openshift:latest helloword-rs-binary/jboss-eap71-openshift:latest
+oc tag openshift/jboss-eap71-openshift:1.2 task-rs-non-ocp-psql/jboss-eap71-openshift:1.2
+oc tag openshift/jboss-eap71-openshift:1.3 task-rs-non-ocp-psql/jboss-eap71-openshift:1.3
+oc tag openshift/jboss-eap71-openshift:latest task-rs-non-ocp-psql/jboss-eap71-openshift:latest
 ```
 Create the deployments folder. This will be referenced for uploading the binary.
 
@@ -58,11 +58,21 @@ Make sure the builder image is available in the developers namespace.
 ```sh
 oc get is  | grep ^jboss-eap71 | cut -f1 -d ' '
 ```
+Log back as developer
 
+```sh
+oc login -u developer -p developer
+```
 Create the build config to process binary (war in this case)
 
 ```sh
-oc new-build --binary=true \                                                                                                                                 
---image-stream=jboss-eap71-openshift \
---name=eap-app
+oc new-app jboss-eap71-openshift~https://github.com/rajiv-ranjan/ocp-playtime.git#master \
+--context-dir=task-rs \
+--env-file=ocp/app-variables.env \
+--labels=name=tasklist
 ```
+
+-----to be deleted-----
+--template=eap71-basic-s2i \
+--param-file=ocp/tasks-external-psql-template.params \
+-----to be deleted-----

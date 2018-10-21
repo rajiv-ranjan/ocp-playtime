@@ -1,0 +1,6 @@
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=admin
+IMAGE_STREAM_NAMESPACE=task-rs-non-ocp-psql
+SOURCE_REPOSITORY_URL=https://github.com/rajiv-ranjan/ocp-playtime
+SOURCE_REPOSITORY_REF=master
+CONTEXT_DIR=task-rs
