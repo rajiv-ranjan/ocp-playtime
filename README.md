@@ -31,7 +31,7 @@ No Minishift instance exists. New 'cpus' setting will be applied on next 'minish
 
 
 ### Game 1:Create user quota for the cluster. For detailed steps Read [follow](https://github.com/rajiv-ranjan/ocp-playtime/blob/master/create_quota.md "multi-project-quota").
-### Game 2:
+### Game 2:DISCONNECTED installation: Populating the registry with the latest Red Hat-certified Source-to-Image (S2I) builder images. For detailed steps Read [follow](https://github.com/rajiv-ranjan/ocp-playtime/blob/master/populate-registry.md "Populate-Registry").
 ### Game 3:Sample application deployment with quota. For detailed steps Read [follow](https://github.com/rajiv-ranjan/ocp-playtime/blob/master/Quota_deployment_example.md "deployment-with-quota"). 
 ### Game 4: Deployment Strategies
 There are three deployment strategies explain and demonstrated. 
