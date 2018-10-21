@@ -38,7 +38,7 @@ import javax.persistence.TableGenerator;
  */
 @SuppressWarnings("serial")
 @Entity
-@Table
+//@Table
 public class Users implements Serializable {
 
     @Id
