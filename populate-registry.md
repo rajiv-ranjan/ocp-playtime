@@ -118,11 +118,13 @@ $ docker push registry.example.com/rhscl/mariadb-101-rhel7:<tag>
 
 — If internet connection can be activated for registry server : 
 
+```sh
 # from registry.access.redhat.com
 for image in rhel7/etcd rhscl/postgresql-96-rhel7 jboss-eap-7/eap70-openshift
 do
   skopeo copy --dest-tls-verify=false docker://registry.access.redhat.com/$image:latest docker://localhost:5000/${image}:latest
 done
+```
 
 
 
