@@ -30,9 +30,9 @@ No Minishift instance exists. New 'cpus' setting will be applied on next 'minish
 
 
 
-### Game 1:
+### Game 1:Create user quota for the cluster. For detailed steps Read [follow](https://github.com/rajiv-ranjan/ocp-playtime/blob/master/create_quota.md "multi-project-quota").
 ### Game 2:
-### Game 3:
+### Game 3:Sample application deployment with quota. For detailed steps Read [follow](https://github.com/rajiv-ranjan/ocp-playtime/blob/master/Quota_deployment_example.md "deployment-with-quota"). 
 ### Game 4: Deployment Strategies
 There are three deployment strategies explain and demonstrated. 
 *   Deployment of application via s2i template in OpenShift. Read further [here](https://github.com/rajiv-ranjan/ocp-playtime/blob/master/helloworld-rs/deployment-from-source-code.md "deployment-from-source-code").
@@ -41,5 +41,5 @@ There are three deployment strategies explain and demonstrated.
 
 ### Game 5:
 ### Game 6:
-### Game 7:
+### Game 7:Create a Horizontal Pod Autoscaler. For detailed steps Read [follow](https://github.com/rajiv-ranjan/ocp-playtime/blob/master/HPA.md "HPA").
 
