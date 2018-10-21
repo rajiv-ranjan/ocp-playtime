@@ -34,9 +34,14 @@ Create the datasource with below details. Please mark the ip of the machine on w
 Changed the datasource in the file  **/tasks-rs/src/main/resources/META-INF/persistence.xml** by editing below tag:
 
 ```xml
-<jta-data-source>java:jboss/datasources/TasksRsQuickstartDSDockerPostgresql</jta-data-source>
+<jta-data-source>${postgresqlDS}</jta-data-source>
 ```
 
+Start the EAP standalone passing datasource variable
+
+```sh
+./standalone.sh -DpostgresqlDS=java:jboss/datasources/TasksRsQuickstartDSDockerPostgresql
+```
 
 To Test the application
 
