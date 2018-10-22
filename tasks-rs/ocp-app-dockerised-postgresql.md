@@ -1,3 +1,14 @@
+Running a local nexus for quicker build of maven projects.
+
+```sh
+docker run -d -p 8081:8081 --name nexus sonatype/nexus3
+curl -u admin:admin123 http://localhost:8081/service/metrics/ping
+```
+
+```sh
+pong
+```
+
 Compile and package the code base.
 
 ```sh
