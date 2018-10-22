@@ -35,10 +35,6 @@
         <extension module="org.wildfly.extension.undertow"/>
         <!-- ##KEYCLOAK_EXTENSION## -->
     </extensions>
-    <system-properties>
-        <property name="env.postgresqlDS" value="java:jboss/datasources/TasksRsQuickstartDSDockerPostgresql"/>
-        <property name="env.postgresqlJDBCConnectionUrl" value="jdbc:postgresql://192.168.0.104:5432/tasksRsXmlQuickStart"/>
-    </system-properties>
     <management>
         <security-realms>
             <security-realm name="ManagementRealm">

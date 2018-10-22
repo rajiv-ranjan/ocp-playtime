@@ -83,8 +83,25 @@ oc new-app jboss-eap71-openshift~https://github.com/rajiv-ranjan/ocp-playtime.gi
 --build-env-file=ocp/build-variables.env \
 --labels=name=tasklist
 ```
+Expose the service create
 
------to be deleted-----
---template=eap71-basic-s2i \
---param-file=ocp/tasks-external-psql-template.params \
------to be deleted-----
+```sh
+oc expose svc/ocp-playtime
+```
+Test the application running
+
+```sh
+curl -i -u 'quickstartUser:quickstartPwd1!' -H "Content-Length: 0" -X POST http://ocp-playtime-task-rs-non-ocp-psql.192.168.64.9.nip.io/tasks-rs/tasks/title/buyMilk
+curl -i -u 'quickstartUser:quickstartPwd1!' -H "Content-Length: 0" -X POST http://ocp-playtime-task-rs-non-ocp-psql.192.168.64.9.nip.io/tasks-rs/tasks/title/buyFruits
+```
+
+
+```sh
+curl -H "Accept: application/json" -u 'quickstartUser:quickstartPwd1!' -X GET http://ocp-playtime-task-rs-non-ocp-psql.192.168.64.9.nip.io/tasks-rs/tasks/title | jq
+```
+
+
+```sh
+curl -i -u 'quickstartUser:quickstartPwd1!' -X DELETE http://ocp-playtime-task-rs-non-ocp-psql.192.168.64.9.nip.io:8080/tasks-rs/tasks/id/1
+```
+

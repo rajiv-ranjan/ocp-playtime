@@ -74,7 +74,7 @@ Date: Sun, 21 Oct 2018 13:08:57 GMT
 Connection: keep-alive
 Content-Length: 0
 ```
-Get all the task with id=1 for the user
+Get the task with id=1 for the user
 
 ```sh
  curl -H "Accept: application/json" -u 'quickstartUser:quickstartPwd1!' -X GET http://localhost:8080/tasks-rs/tasks/id/2
