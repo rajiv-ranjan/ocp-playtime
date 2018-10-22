@@ -80,7 +80,7 @@ Create the build config to process binary (war in this case)
 oc new-app jboss-eap71-openshift~https://github.com/rajiv-ranjan/ocp-playtime.git#master \
 --context-dir=tasks-rs \
 --env-file=ocp/app-variables.env \
---build-env=MAVEN_ARGS_APPEND=-Pjboss-community-repository \
+--build-env-file=ocp/build-variables.env \
 --labels=name=tasklist
 ```
 
