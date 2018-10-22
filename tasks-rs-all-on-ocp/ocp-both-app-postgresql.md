@@ -74,7 +74,7 @@ Create the build config to process binary (war in this case)
 oc new-app --template=eap71-postgresql-s2i \
 -p SOURCE_REPOSITORY_URL="https://github.com/rajiv-ranjan/ocp-playtime" \
 -p SOURCE_REPOSITORY_REF="master" \
--p CONTEXT_DIR='task-rs-all-on-ocp' \
+-p CONTEXT_DIR='tasks-rs-all-on-ocp' \
 -p APPLICATION_NAME="task-rs" \
 -p DB_JNDI=java:jboss/datasources/TasksRsQuickstartDSDockerPostgresql \
 -p DB_DATABASE=tasksRsXmlQuickStart \
