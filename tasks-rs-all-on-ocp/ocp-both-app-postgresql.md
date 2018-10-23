@@ -68,6 +68,32 @@ Log back as developer
 ```sh
 oc login -u developer -p developer
 ```
+Add the keystore file that will be used by the EAP instance.
+
+```sh
+#follow the instructions
+keytool -genkey -keyalg RSA -alias eapdemo-selfsigned -keystore keystore.jks -validity 360 -keysize 2048
+oc create secret generic  eap7-app-secret --from-file=keystore.jks
+```
+Check the details of secret object created.
+
+```sh
+oc describe secret eap7-app-secret
+```
+Sample output
+
+```sh
+Name:         eap7-app-secret
+Namespace:    task-rs-all-on-ocp
+Labels:       <none>
+Annotations:  <none>
+
+Type:  Opaque
+
+Data
+====
+keystore.jks:  2255 bytes
+```
 Create the build config to process binary (war in this case)
 
 ```sh
@@ -107,9 +133,9 @@ oc expose svc/task-rs
 Test the application running
 
 ```sh
-curl -i -u 'quickstartUser:quickstartPwd1!' -H "Content-Length: 0" -X POST http://task-rs-task-rs-all-on-ocp.192.168.64.9.nip.io/tasks-rs/tasks/title/buyMilk
-curl -i -u 'quickstartUser:quickstartPwd1!' -H "Content-Length: 0" -X POST http://task-rs-task-rs-all-on-ocp.192.168.64.9.nip.io/tasks-rs/tasks/title/buyFruits
-curl -H "Accept: application/json" -u 'quickstartUser:quickstartPwd1!' -X GET http://task-rs-task-rs-all-on-ocp.192.168.64.9.nip.io/tasks-rs/tasks/title | jq
+curl -i -u 'quickstartUser:quickstartPwd1!' -H "Content-Length: 0" -X POST http://task-rs-task-rs-all-on-ocp.192.168.64.9.nip.io/tasks-rs-all-on-ocp/tasks/title/buyMilk
+curl -i -u 'quickstartUser:quickstartPwd1!' -H "Content-Length: 0" -X POST http://task-rs-task-rs-all-on-ocp.192.168.64.9.nip.io/tasks-rs-all-on-ocp/tasks/title/buyFruits
+curl -H "Accept: application/json" -u 'quickstartUser:quickstartPwd1!' -X GET http://task-rs-task-rs-all-on-ocp.192.168.64.9.nip.io/tasks-rs-all-on-ocp/tasks/title | jq
 ```
 
 
