@@ -101,6 +101,7 @@ oc new-app --template=eap71-postgresql-s2i \
 -p SOURCE_REPOSITORY_URL="https://github.com/rajiv-ranjan/ocp-playtime" \
 -p SOURCE_REPOSITORY_REF="master" \
 -p CONTEXT_DIR='tasks-rs-all-on-ocp' \
+-p IMAGE_STREAM_NAMESPACE="task-rs-all-on-ocp" \
 -p APPLICATION_NAME="task-rs" \
 -p DB_JNDI=java:jboss/datasources/TasksRsQuickstartDSDockerPostgresql \
 -p DB_DATABASE=tasksRsXmlQuickStart \
@@ -111,7 +112,7 @@ oc new-app --template=eap71-postgresql-s2i \
 --labels=name=task-rs-all-on-ocp
 
 
--p IMAGE_STREAM_NAMESPACE="task-rs-all-on-ocp" \
+
 
 oc new-app jboss-eap71-openshift~https://github.com/rajiv-ranjan/ocp-playtime.git#master \
 --context-dir=tasks-rs \

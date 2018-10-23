@@ -125,7 +125,7 @@
             <job-repository name="in-memory">
                 <in-memory/>
             </job-repository>
-                 <job-repository name="task_rs_postgresql-DB">      <jdbc data-source="task_rs_postgresql-DB"/>    </job-repository>    <!-- ##JOB_REPOSITORY## -->
+                 <!-- ##JOB_REPOSITORY## -->
             <thread-pool name="batch">
                 <max-threads count="10"/>
                 <keepalive-time time="30" unit="seconds"/>
@@ -134,8 +134,7 @@
         <subsystem xmlns="urn:jboss:domain:bean-validation:1.0"/>
         <subsystem xmlns="urn:jboss:domain:datasources:5.0">
             <datasources>
-                <xa-datasource jndi-name="java:jboss/datasources/TasksRsQuickstartDSDockerPostgresql" pool-name="task_rs_postgresql-DB" use-java-context="true" enabled="true"> <xa-datasource-property name="DatabaseName">tasksRsXmlQuickStart</xa-datasource-property> <xa-datasource-property name="PortNumber">5432</xa-datasource-property> <xa-datasource-property name="ServerName">172.30.232.206</xa-datasource-property> <driver>postgresql</driver> <security> <user-name>dbUser</user-name> <password>dbUserPassword#123</password> </security> <validation> <validate-on-match>true</validate-on-match> <background-validation>false</background-validation> <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker"></valid-connection-checker> <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter"></exception-sorter> </validation> </xa-datasource>
-<datasource jta="false" jndi-name="java:jboss/datasources/TasksRsQuickstartDSDockerPostgresqlObjectStore" pool-name="task_rs_postgresqlObjectStorePool" enabled="true"> <connection-url>jdbc:postgresql://172.30.232.206:5432/tasksRsXmlQuickStart</connection-url> <driver>postgresql</driver> <security> <user-name>dbUser</user-name> <password>dbUserPassword#123</password> </security> </datasource>
+                
 <!-- ##DATASOURCES## -->
                 <drivers>
                     <driver name="h2" module="com.h2database.h2">
@@ -211,7 +210,7 @@
                     <option name="MAX_OUTBOUND_MESSAGES" value="1234" type="remoting"/>
                 </channel-creation-options>
             </remote>
-                        <timer-service thread-pool-name="default" default-data-store="task_rs_postgresql-DB_ds">                <data-stores>                    <file-data-store name="default-file-store" path="timer-service-data" relative-to="jboss.server.data.dir"/>                    <database-data-store name="task_rs_postgresql-DB_ds" datasource-jndi-name="java:jboss/datasources/TasksRsQuickstartDSDockerPostgresql" database="postgresql" partition="task_rs_postgresql-DB_part" refresh-interval="-1"/>        <!-- ##DATASTORES## -->                </data-stores>            </timer-service>
+                        
             <thread-pools>
                 <thread-pool name="default">
                     <max-threads count="10"/>
